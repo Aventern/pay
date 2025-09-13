@@ -253,7 +253,11 @@ export default function HomePage() {
           <div className="flex justify-between items-center">
             <h1 className="text-3xl font-bold text-black">ジュエリーショップ</h1>
             <div className="flex items-center gap-4">
-              <Button variant="outline" onClick={() => (window.location.href = "/admin")}>
+              <Button
+                variant="outline"
+                onClick={() => (window.location.href = "/admin")}
+                className="text-black border-gray-300 hover:bg-gray-50"
+              >
                 管理画面
               </Button>
               <div className="flex items-center gap-2">
@@ -339,7 +343,7 @@ function ProductCard({
               variant="outline"
               size="sm"
               onClick={() => window.open(product.detailUrl, "_blank")}
-              className="w-full"
+              className="w-full text-black border-gray-300 hover:bg-gray-50"
             >
               詳細を見る
             </Button>
@@ -350,12 +354,12 @@ function ProductCard({
           <div className="mb-4">
             <label className="block text-sm font-medium mb-2 text-black">{product.options.label}</label>
             <Select value={selectedOption} onValueChange={setSelectedOption}>
-              <SelectTrigger>
-                <SelectValue placeholder="選択してください" />
+              <SelectTrigger className="text-black">
+                <SelectValue placeholder="選択してください" className="text-black" />
               </SelectTrigger>
               <SelectContent>
                 {product.options.values.map((option) => (
-                  <SelectItem key={option} value={option}>
+                  <SelectItem key={option} value={option} className="text-black">
                     {option}
                   </SelectItem>
                 ))}
@@ -388,7 +392,7 @@ function ProductCard({
           </div>
         )}
 
-        <p className="text-sm text-gray-500 mt-2">在庫: {product.stock}個</p>
+        <p className="text-sm text-black mt-2">在庫: {product.stock}個</p>
       </CardContent>
     </Card>
   )
