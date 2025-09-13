@@ -119,7 +119,43 @@
   * {
     @apply border-border outline-ring/50;
   }
+
   body {
     @apply bg-background text-foreground;
   }
+}
+
+
+/* グローバルCSSに追加 */
+button {
+  opacity: 1 !important;
+}
+
+.bg-primary {
+  background-color: var(--primary) !important;
+  opacity: 1 !important;
+}
+
+.text-primary-foreground {
+  color: var(--primary-foreground) !important;
+}
+
+/* ボタンの透明度問題を解決 */
+.btn,
+button,
+[type='button'],
+[type='reset'],
+[type='submit'] {
+  opacity: 1 !important;
+}
+
+/* プライマリボタンのスタイルを明示的に定義 */
+.bg-primary {
+  background-color: hsl(var(--primary)) !important;
+  color: hsl(var(--primary-foreground)) !important;
+}
+
+/* ホバー効果も明示的に定義 */
+.bg-primary:hover {
+  background-color: hsl(var(--primary) / 0.9) !important;
 }

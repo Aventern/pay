@@ -58,3 +58,17 @@ body {
   color: hsl(var(--foreground));
   background: hsl(var(--background));
 }
+
+/* グローバルCSSに追加 */
+button {
+  opacity: 1 !important;
+}
+
+.bg-primary {
+  background-color: var(--primary) !important;
+  opacity: 1 !important;
+}
+
+.text-primary-foreground {
+  color: var(--primary-foreground) !important;
+}
