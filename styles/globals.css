@@ -94,3 +94,103 @@ button:not([class*="bg-"]) {
   background-color: hsl(210 40% 98%) !important;
   color: hsl(222.2 47.4% 11.2%) !important;
 }
+
+
+
+/* テキストの色を黒に強制変更 */
+body {
+  color: #000000 !important;
+}
+
+/* すべてのテキスト要素を黒に */
+* {
+  color: #000000 !important;
+}
+
+/* 特定のクラスのテキスト色も黒に */
+.text-foreground,
+.text-primary-foreground,
+.text-secondary-foreground,
+.text-muted-foreground,
+.text-accent-foreground,
+.text-destructive-foreground,
+.text-card-foreground,
+.text-popover-foreground {
+  color: #000000 !important;
+}
+
+/* 見出し類も黒に */
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+.card-title,
+.font-bold,
+.font-medium,
+.text-lg,
+.text-xl,
+.text-2xl,
+.text-3xl {
+  color: #000000 !important;
+}
+
+/* リンクテキストも黒に */
+a,
+.text-primary {
+  color: #000000 !important;
+}
+
+a:hover {
+  color: #333333 !important;
+}
+
+/* 入力欄の文字色も黒に */
+input,
+select,
+textarea {
+  color: #000000 !important;
+}
+
+input::placeholder,
+textarea::placeholder {
+  color: #666666 !important;
+}
+
+/* ボタンの文字色（白いボタン用） */
+.bg-primary .text-primary-foreground,
+.bg-destructive .text-destructive-foreground {
+  color: #ffffff !important;
+}
+
+/* ダークモードでもテキストを黒に維持 */
+.dark body,
+.dark *,
+.dark .text-foreground,
+.dark .text-primary-foreground,
+.dark .text-secondary-foreground,
+.dark h1,
+.dark h2,
+.dark h3,
+.dark h4,
+.dark h5,
+.dark h6 {
+  color: #000000 !important;
+}
+
+/* 背景色は白のまま維持 */
+body,
+.bg-background,
+.bg-card,
+.bg-popover,
+.bg-secondary,
+.bg-muted,
+.bg-accent {
+  background-color: #ffffff !important;
+}
+
+/* ボーダー色を少し暗く */
+.border-border {
+  border-color: #e5e5e5 !important;
+}
