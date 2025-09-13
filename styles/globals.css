@@ -159,3 +159,34 @@ button,
 .bg-primary:hover {
   background-color: hsl(var(--primary) / 0.9) !important;
 }
+
+
+/* 緊急修正: ボタンのスタイルを直接定義 */
+button.bg-primary {
+  background-color: oklch(0.205 0 0) !important;
+  color: oklch(0.985 0 0) !important;
+  opacity: 1 !important;
+}
+
+button.bg-primary:hover {
+  background-color: oklch(0.205 0 0 / 0.9) !important;
+}
+
+/* ダークモード対応 */
+.dark button.bg-primary {
+  background-color: oklch(0.985 0 0) !important;
+  color: oklch(0.205 0 0) !important;
+}
+
+.dark button.bg-primary:hover {
+  background-color: oklch(0.985 0 0 / 0.9) !important;
+}
+
+/* アウトラインボタン */
+button.border-border {
+  border-color: oklch(0.922 0 0) !important;
+}
+
+.dark button.border-border {
+  border-color: oklch(0.269 0 0) !important;
+}
