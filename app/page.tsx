@@ -206,11 +206,11 @@ export default function HomePage() {
               {cart.map((item, index) => (
                 <div key={index} className="flex justify-between items-center border-b pb-2">
                   <div>
-                    <span className="font-medium">{item.name}</span>
+                    <span className="font-medium text-black">{item.name}</span>
                     {item.selectedOption && <span className="text-sm text-gray-600 ml-2">({item.selectedOption})</span>}
                     <span className="text-sm text-gray-600 ml-2">× {item.quantity}個</span>
                   </div>
-                  <span className="font-medium">¥{(item.price * item.quantity).toLocaleString()}</span>
+                  <span className="font-medium text-black">¥{(item.price * item.quantity).toLocaleString()}</span>
                 </div>
               ))}
 
@@ -251,14 +251,14 @@ export default function HomePage() {
       <header className="bg-white shadow-sm border-b">
         <div className="max-w-6xl mx-auto px-4 py-6">
           <div className="flex justify-between items-center">
-            <h1 className="text-3xl font-bold text-gray-900">ジュエリーショップ</h1>
+            <h1 className="text-3xl font-bold text-black">ジュエリーショップ</h1>
             <div className="flex items-center gap-4">
               <Button variant="outline" onClick={() => (window.location.href = "/admin")}>
                 管理画面
               </Button>
               <div className="flex items-center gap-2">
-                <ShoppingCart className="w-5 h-5" />
-                <span className="font-medium">{cart.reduce((sum, item) => sum + item.quantity, 0)}</span>
+                <ShoppingCart className="w-5 h-5 text-black" />
+                <span className="font-medium text-black">{cart.reduce((sum, item) => sum + item.quantity, 0)}</span>
               </div>
             </div>
           </div>
@@ -283,8 +283,10 @@ export default function HomePage() {
             <CardContent className="p-4">
               <div className="flex justify-between items-center">
                 <div>
-                  <span className="text-lg font-medium">{cart.reduce((sum, item) => sum + item.quantity, 0)}点</span>
-                  <span className="text-2xl font-bold ml-4">¥{getTotalPrice().toLocaleString()}</span>
+                  <span className="text-lg font-medium text-black">
+                    {cart.reduce((sum, item) => sum + item.quantity, 0)}点
+                  </span>
+                  <span className="text-2xl font-bold ml-4 text-black">¥{getTotalPrice().toLocaleString()}</span>
                 </div>
                 <Button onClick={handleCheckout} size="lg">
                   注文確認へ
@@ -328,7 +330,7 @@ function ProductCard({
         </div>
       </CardHeader>
       <CardContent className="p-4">
-        <CardTitle className="text-lg mb-2">{product.name}</CardTitle>
+        <CardTitle className="text-lg mb-2 text-black">{product.name}</CardTitle>
         <p className="text-2xl font-bold text-blue-600 mb-4">¥{product.price.toLocaleString()}</p>
 
         {product.detailUrl && (
@@ -346,7 +348,7 @@ function ProductCard({
 
         {product.options && !isOutOfStock && (
           <div className="mb-4">
-            <label className="block text-sm font-medium mb-2">{product.options.label}</label>
+            <label className="block text-sm font-medium mb-2 text-black">{product.options.label}</label>
             <Select value={selectedOption} onValueChange={setSelectedOption}>
               <SelectTrigger>
                 <SelectValue placeholder="選択してください" />
@@ -369,7 +371,7 @@ function ProductCard({
                 <Button variant="outline" size="sm" onClick={() => onUpdateQuantity(product.id, selectedOption, -1)}>
                   <Minus className="w-4 h-4" />
                 </Button>
-                <span className="font-medium">{cartItem.quantity}</span>
+                <span className="font-medium text-black">{cartItem.quantity}</span>
                 <Button variant="outline" size="sm" onClick={() => onUpdateQuantity(product.id, selectedOption, 1)}>
                   <Plus className="w-4 h-4" />
                 </Button>

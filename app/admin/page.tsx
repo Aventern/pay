@@ -162,7 +162,7 @@ export default function AdminPage() {
                 <ArrowLeft className="w-4 h-4 mr-2" />
                 ショップに戻る
               </Button>
-              <h1 className="text-3xl font-bold text-gray-900">管理画面</h1>
+              <h1 className="text-3xl font-bold text-black">管理画面</h1>
             </div>
             <Button variant="outline" onClick={handleLogout}>
               ログアウト
@@ -173,7 +173,7 @@ export default function AdminPage() {
 
       <main className="max-w-6xl mx-auto px-4 py-8">
         <div className="flex justify-between items-center mb-6">
-          <h2 className="text-2xl font-bold">商品管理</h2>
+          <h2 className="text-2xl font-bold text-black">商品管理</h2>
           <Button onClick={() => setShowAddForm(true)}>
             <Plus className="w-4 h-4 mr-2" />
             商品を追加
@@ -201,7 +201,7 @@ export default function AdminPage() {
                   />
                 ) : (
                   <>
-                    <CardTitle className="text-lg mb-2">{product.name}</CardTitle>
+                    <CardTitle className="text-lg mb-2 text-black">{product.name}</CardTitle>
                     <p className="text-xl font-bold text-blue-600 mb-2">¥{product.price.toLocaleString()}</p>
                     <p className="text-sm text-gray-600 mb-4">在庫: {product.stock}個</p>
                     {product.detailUrl && (
@@ -294,12 +294,14 @@ function ProductForm({
   return (
     <Card className="mb-6">
       <CardHeader>
-        <CardTitle>新商品追加</CardTitle>
+        <CardTitle className="text-black">新商品追加</CardTitle>
       </CardHeader>
       <CardContent>
         <form onSubmit={handleSubmit} className="space-y-4">
           <div>
-            <Label htmlFor="name">商品名</Label>
+            <Label htmlFor="name" className="text-black">
+              商品名
+            </Label>
             <Input
               id="name"
               value={formData.name}
@@ -308,7 +310,9 @@ function ProductForm({
             />
           </div>
           <div>
-            <Label htmlFor="price">価格</Label>
+            <Label htmlFor="price" className="text-black">
+              価格
+            </Label>
             <Input
               id="price"
               type="number"
@@ -318,7 +322,9 @@ function ProductForm({
             />
           </div>
           <div>
-            <Label htmlFor="stock">在庫数</Label>
+            <Label htmlFor="stock" className="text-black">
+              在庫数
+            </Label>
             <Input
               id="stock"
               type="number"
@@ -328,12 +334,16 @@ function ProductForm({
             />
           </div>
           <div>
-            <Label htmlFor="image">商品画像</Label>
+            <Label htmlFor="image" className="text-black">
+              商品画像
+            </Label>
             <Input id="image" type="file" accept="image/*" onChange={handleImageChange} />
             <p className="text-sm text-gray-500 mt-1">画像ファイルを選択してください</p>
           </div>
           <div>
-            <Label htmlFor="detailUrl">詳細ページURL</Label>
+            <Label htmlFor="detailUrl" className="text-black">
+              詳細ページURL
+            </Label>
             <Input
               id="detailUrl"
               value={formData.detailUrl}
