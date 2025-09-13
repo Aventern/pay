@@ -71,12 +71,14 @@ export default function AdminPage() {
         <Card className="w-full max-w-md">
           <CardHeader className="text-center">
             <Lock className="w-12 h-12 mx-auto mb-4 text-gray-600" />
-            <CardTitle className="text-2xl">管理画面ログイン</CardTitle>
+            <CardTitle className="text-2xl text-black">管理画面ログイン</CardTitle>
           </CardHeader>
           <CardContent>
             <form onSubmit={handleLogin} className="space-y-4">
               <div>
-                <Label htmlFor="password">パスワード</Label>
+                <Label htmlFor="password" className="text-black">
+                  パスワード
+                </Label>
                 <Input
                   id="password"
                   type="password"
@@ -84,10 +86,11 @@ export default function AdminPage() {
                   onChange={(e) => setPassword(e.target.value)}
                   placeholder="管理者パスワードを入力"
                   required
+                  className="text-black"
                 />
               </div>
               {error && <p className="text-red-500 text-sm">{error}</p>}
-              <Button type="submit" className="w-full">
+              <Button type="submit" className="w-full text-white bg-blue-600 hover:bg-blue-700">
                 ログイン
               </Button>
             </form>
@@ -158,13 +161,13 @@ export default function AdminPage() {
         <div className="max-w-6xl mx-auto px-4 py-6">
           <div className="flex items-center justify-between">
             <div className="flex items-center gap-4">
-              <Button variant="outline" onClick={() => (window.location.href = "/")}>
+              <Button variant="outline" onClick={() => (window.location.href = "/")} className="text-black">
                 <ArrowLeft className="w-4 h-4 mr-2" />
                 ショップに戻る
               </Button>
               <h1 className="text-3xl font-bold text-black">管理画面</h1>
             </div>
-            <Button variant="outline" onClick={handleLogout}>
+            <Button variant="outline" onClick={handleLogout} className="text-black bg-transparent">
               ログアウト
             </Button>
           </div>
@@ -174,7 +177,7 @@ export default function AdminPage() {
       <main className="max-w-6xl mx-auto px-4 py-8">
         <div className="flex justify-between items-center mb-6">
           <h2 className="text-2xl font-bold text-black">商品管理</h2>
-          <Button onClick={() => setShowAddForm(true)}>
+          <Button onClick={() => setShowAddForm(true)} className="text-white bg-blue-600 hover:bg-blue-700">
             <Plus className="w-4 h-4 mr-2" />
             商品を追加
           </Button>
@@ -203,11 +206,16 @@ export default function AdminPage() {
                   <>
                     <CardTitle className="text-lg mb-2 text-black">{product.name}</CardTitle>
                     <p className="text-xl font-bold text-blue-600 mb-2">¥{product.price.toLocaleString()}</p>
-                    <p className="text-sm text-gray-600 mb-4">在庫: {product.stock}個</p>
+                    <p className="text-sm text-black mb-4">在庫: {product.stock}個</p>
                     {product.detailUrl && (
-                      <p className="text-sm text-gray-600 mb-4">
+                      <p className="text-sm text-black mb-4">
                         詳細ページ:{" "}
-                        <a href={product.detailUrl} target="_blank" rel="noopener noreferrer">
+                        <a
+                          href={product.detailUrl}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="text-blue-600 underline"
+                        >
                           {product.detailUrl}
                         </a>
                       </p>
@@ -220,6 +228,7 @@ export default function AdminPage() {
                           onClick={() => moveProductUp(product.id)}
                           disabled={index === 0}
                           title="上に移動"
+                          className="text-black"
                         >
                           <ChevronUp className="w-4 h-4" />
                         </Button>
@@ -229,14 +238,25 @@ export default function AdminPage() {
                           onClick={() => moveProductDown(product.id)}
                           disabled={index === products.length - 1}
                           title="下に移動"
+                          className="text-black"
                         >
                           <ChevronDown className="w-4 h-4" />
                         </Button>
                       </div>
-                      <Button variant="outline" size="sm" onClick={() => setIsEditing(product.id)}>
+                      <Button
+                        variant="outline"
+                        size="sm"
+                        onClick={() => setIsEditing(product.id)}
+                        className="text-black"
+                      >
                         <Edit className="w-4 h-4" />
                       </Button>
-                      <Button variant="outline" size="sm" onClick={() => deleteProduct(product.id)}>
+                      <Button
+                        variant="outline"
+                        size="sm"
+                        onClick={() => deleteProduct(product.id)}
+                        className="text-black"
+                      >
                         <Trash2 className="w-4 h-4" />
                       </Button>
                     </div>
@@ -307,6 +327,7 @@ function ProductForm({
               value={formData.name}
               onChange={(e) => setFormData({ ...formData, name: e.target.value })}
               required
+              className="text-black"
             />
           </div>
           <div>
@@ -319,6 +340,7 @@ function ProductForm({
               value={formData.price}
               onChange={(e) => setFormData({ ...formData, price: e.target.value })}
               required
+              className="text-black"
             />
           </div>
           <div>
@@ -331,14 +353,15 @@ function ProductForm({
               value={formData.stock}
               onChange={(e) => setFormData({ ...formData, stock: e.target.value })}
               required
+              className="text-black"
             />
           </div>
           <div>
             <Label htmlFor="image" className="text-black">
               商品画像
             </Label>
-            <Input id="image" type="file" accept="image/*" onChange={handleImageChange} />
-            <p className="text-sm text-gray-500 mt-1">画像ファイルを選択してください</p>
+            <Input id="image" type="file" accept="image/*" onChange={handleImageChange} className="text-black" />
+            <p className="text-sm text-gray-600 mt-1">画像ファイルを選択してください</p>
           </div>
           <div>
             <Label htmlFor="detailUrl" className="text-black">
@@ -349,11 +372,14 @@ function ProductForm({
               value={formData.detailUrl}
               onChange={(e) => setFormData({ ...formData, detailUrl: e.target.value })}
               placeholder="商品詳細ページのURLを入力（任意）"
+              className="text-black"
             />
           </div>
           <div className="flex gap-2">
-            <Button type="submit">追加</Button>
-            <Button type="button" variant="outline" onClick={onCancel}>
+            <Button type="submit" className="text-white bg-blue-600 hover:bg-blue-700">
+              追加
+            </Button>
+            <Button type="button" variant="outline" onClick={onCancel} className="text-black bg-transparent">
               キャンセル
             </Button>
           </div>
@@ -395,29 +421,33 @@ function ProductEditForm({
         value={formData.name}
         onChange={(e) => setFormData({ ...formData, name: e.target.value })}
         placeholder="商品名"
+        className="text-black"
       />
       <Input
         type="number"
         value={formData.price}
         onChange={(e) => setFormData({ ...formData, price: e.target.value })}
         placeholder="価格"
+        className="text-black"
       />
       <Input
         type="number"
         value={formData.stock}
         onChange={(e) => setFormData({ ...formData, stock: e.target.value })}
         placeholder="在庫数"
+        className="text-black"
       />
       <Input
         value={formData.detailUrl}
         onChange={(e) => setFormData({ ...formData, detailUrl: e.target.value })}
         placeholder="詳細ページURL"
+        className="text-black"
       />
       <div className="flex gap-2">
-        <Button type="submit" size="sm">
+        <Button type="submit" size="sm" className="text-white bg-blue-600 hover:bg-blue-700">
           保存
         </Button>
-        <Button type="button" variant="outline" size="sm" onClick={onCancel}>
+        <Button type="button" variant="outline" size="sm" onClick={onCancel} className="text-black bg-transparent">
           キャンセル
         </Button>
       </div>
